@@ -11,8 +11,16 @@ Use a "research terminal" style:
 - crisp tables, evidence badges, timeline, supply-chain map, and scenario grid
 - restrained palette with theme accents
 - no landing-page hero, no marketing copy, no generic purple gradient
+- for Chinese reports, all reader-visible headings, labels, table headers, notes, empty states, and narrative copy must be Chinese
 
 This borrows from frontend-slides principles: single-file delivery, show-don't-tell visuals, distinctive design, and rendered verification.
+
+## Language Rules
+
+- Translate English report copy into Chinese by default.
+- Keep only unavoidable identifiers: ticker symbols, URLs, exchange codes, official filing form names, product names, accounting terms, and source titles where translation would reduce precision.
+- When an identifier is kept in English, explain it in Chinese on first use.
+- Do not leave template labels such as "One-line verdict", "Confidence", "Watch", "Read", "Current", "Prior", "Bull", "Base", "Bear", or "Not applicable" in generated Chinese reports.
 
 ## Required Sections
 
@@ -62,4 +70,5 @@ Before delivery, verify:
 - market reaction section exists when the user asks about stock movement
 - source register exists
 - each core finding has at least one source
+- reader-visible English boilerplate is translated in Chinese reports
 - no obvious text overlap at desktop and mobile widths

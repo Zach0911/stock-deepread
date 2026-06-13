@@ -133,7 +133,7 @@
 
     .chain { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
     .chain-node { border: 1px solid var(--line); background: #fffdf7; padding: 14px; min-height: 150px; position: relative; }
-    .chain-node::after { content: "->"; position: absolute; right: -16px; top: 50%; transform: translateY(-50%); color: var(--accent); font-family: var(--mono); font-weight: 800; }
+    .chain-node::after { content: "→"; position: absolute; right: -16px; top: 50%; transform: translateY(-50%); color: var(--accent); font-family: var(--mono); font-weight: 800; }
     .chain-node:last-child::after { content: ""; }
     .chain-layer { font-family: var(--mono); font-size: 11px; color: var(--muted); }
     .chain-title { font-weight: 800; margin: 8px 0; }
@@ -161,7 +161,7 @@
       #key-metrics .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .finding-grid, .segment-grid, .scenario-grid { grid-template-columns: 1fr; }
       .chain { grid-template-columns: 1fr; }
-      .chain-node::after { content: "v"; right: 18px; top: auto; bottom: -18px; transform: none; }
+      .chain-node::after { content: "↓"; right: 18px; top: auto; bottom: -18px; transform: none; }
       .chain-node:last-child::after { content: ""; }
       .source-row { grid-template-columns: 1fr; }
       .driver { grid-template-columns: 1fr; }
@@ -187,7 +187,7 @@
       <section id="findings">
         <div class="section-head">
           <h2>这次真正变了什么</h2>
-          <div class="section-note">每条核心判断都必须回到 A/B/C 证据，D/E 只能作为线索或推断。</div>
+          <div class="section-note">每条核心判断都必须回到一至三等证据，四、五等证据只能作为线索或推断。</div>
         </div>
         <div class="finding-grid">{{FINDINGS}}</div>
       </section>
@@ -218,8 +218,8 @@
 
       <section id="call-language">
         <div class="section-head">
-          <h2>电话会语言与 Q&amp;A</h2>
-          <div class="section-note">区分 prepared remarks、分析师追问、回避点和措辞变化。</div>
+          <h2>电话会语言与问答</h2>
+          <div class="section-note">区分管理层预设陈述、分析师追问、回避点和措辞变化。</div>
         </div>
         <div class="panel">{{CALL_LANGUAGE}}</div>
       </section>
@@ -243,7 +243,7 @@
       <section id="scenarios">
         <div class="section-head">
           <h2>情景、分歧与证伪</h2>
-          <div class="section-note">结论不只看 bull case，也写清楚什么会让它失效。</div>
+          <div class="section-note">结论不只看乐观情景，也写清楚什么会让它失效。</div>
         </div>
         <div class="scenario-grid">{{SCENARIOS}}</div>
       </section>
@@ -251,7 +251,7 @@
       <section id="source-register">
         <div class="section-head">
           <h2>信源与证据表</h2>
-          <div class="section-note">A/B/C 支撑事实与核心判断；D 级只展示市场叙事。</div>
+          <div class="section-note">一至三等证据支撑事实与核心判断；四等证据只展示市场叙事。</div>
         </div>
         <div class="source-list">{{SOURCE_REGISTER}}</div>
         <div class="footnote">{{DISCLAIMER}}</div>

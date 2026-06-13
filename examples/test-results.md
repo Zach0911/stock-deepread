@@ -31,6 +31,7 @@ python3 /Users/chaozhang/.codex/skills/.system/skill-creator/scripts/quick_valid
 - 样例 HTML 已生成到 `examples/sample-report.html`。
 - HTML 必需区块、指标卡、核心发现和信源表校验通过。
 - HTML 自包含 CSS、移动端媒体规则、信源链接、社媒边界说明均存在。
+- 中文报告可见文本扫描通过：忽略 HTML/CSS 结构、URL 和属性后，页面正文没有英文单词残留。
 - 使用系统 Google Chrome + Playwright 完成桌面和移动端首屏渲染检查：
   - `examples/screenshots/sample-report-desktop.png`
   - `examples/screenshots/sample-report-mobile.png`
@@ -40,14 +41,15 @@ python3 /Users/chaozhang/.codex/skills/.system/skill-creator/scripts/quick_valid
 
 ```json
 {
-  "title": "Tesla 财报与电话会深读样例",
+  "title": "特斯拉财报与电话会深读样例",
   "sections": 11,
   "metrics": 4,
   "findings": 4,
   "sources": 5,
+  "visibleAsciiWords": [],
   "heroVisible": true,
-  "desktopBytes": 210625,
-  "mobileBytes": 82966
+  "desktopBytes": 211221,
+  "mobileBytes": 83398
 }
 ```
 

@@ -1,14 +1,15 @@
 {
   "sample_only": true,
   "company": {
-    "name": "Tesla",
-    "ticker": "TSLA",
+    "name": "特斯拉",
+    "display_name": "特斯拉",
+    "ticker": "",
     "market": "US",
-    "industry": "Auto, energy storage, AI hardware/software"
+    "industry": "汽车、储能、人工智能硬件与软件"
   },
   "report": {
-    "title": "Tesla 财报与电话会深读样例",
-    "period": "Sample period, not realtime",
+    "title": "特斯拉财报与电话会深读样例",
+    "period": "样例期间，非实时数据",
     "disclosure_date": "2025-04-22",
     "generated_at": "2026-06-13",
     "theme": "industrial-chain",
@@ -16,23 +17,23 @@
     "latest_request": false
   },
   "conclusion": {
-    "verdict": "Watch / 等待证据再确认",
-    "confidence": "Medium",
-    "summary": "这是一份示例报告，用来展示 stock-deepread 的 HTML 结构与证据纪律。样例结论不是实时投资判断；真实使用时必须刷新最新披露、电话会和股价数据。",
+    "verdict": "观察 / 等待证据再确认",
+    "confidence": "中等",
+    "summary": "这是一份示例报告，用来展示股票深读的网页报告结构与证据纪律。样例结论不是实时投资判断；真实使用时必须刷新最新披露、电话会和股价数据。",
     "key_debate": "市场到底在给短期交付和毛利压力定价，还是在提前定价自动驾驶与储能的长期期权。",
     "next_catalyst": "下一次交付数据、毛利率趋势、储能部署和管理层对自动驾驶商业化节奏的更新。",
     "main_disconfirming_evidence": "如果价格竞争继续侵蚀汽车毛利，且储能或软件收入无法弥补，长期叙事需要下修。"
   },
   "metrics": [
-    {"label": "Revenue", "value": "$19.3B", "delta": "sample -9% YoY", "note": "A-grade filing/release in real report"},
-    {"label": "Automotive gross margin", "value": "sample 16.3%", "delta": "pressure from pricing/mix", "note": "Use official shareholder deck"},
-    {"label": "Free cash flow", "value": "sample negative", "delta": "working-capital + capex watch", "note": "Tie to cash conversion"},
-    {"label": "Event-window move", "value": "sample -8%", "delta": "relative underperformance", "note": "Use price source + benchmark"}
+    {"label": "营业收入", "value": "193 亿美元", "delta": "样例同比下降 9%", "note": "真实报告需使用一等披露信源"},
+    {"label": "汽车业务毛利率", "value": "样例 16.3%", "delta": "价格与产品结构带来压力", "note": "使用官方股东材料核验"},
+    {"label": "自由现金流", "value": "样例为负", "delta": "需关注营运资本与资本开支", "note": "关联现金转换质量"},
+    {"label": "事件窗口涨跌幅", "value": "样例下跌 8%", "delta": "相对跑输", "note": "使用价格信源与基准比较"}
   ],
   "findings": [
     {
-      "title": "核心不是只看 EPS beat/miss，而是汽车毛利能否止住下滑。",
-      "body": ["价格、产品 mix、产能利用率和原材料成本共同决定汽车业务的利润底座。", "如果毛利率继续下探，市场会降低对长期期权的容忍度。"],
+      "title": "核心不是只看每股收益是否超预期，而是汽车毛利能否止住下滑。",
+      "body": ["价格、产品结构、产能利用率和原材料成本共同决定汽车业务的利润底座。", "如果毛利率继续下探，市场会降低对长期期权的容忍度。"],
       "supporting_sources": ["S1", "S2"],
       "core": true
     },
@@ -43,8 +44,8 @@
       "core": true
     },
     {
-      "title": "电话会的真正信息量在 Q&A：管理层是否直接回答需求和毛利问题。",
-      "body": ["prepared remarks 通常强调长期愿景，Q&A 更能暴露投资者担心的短期变量。", "回避或反复强调的措辞应进入后续跟踪清单。"],
+      "title": "电话会的真正信息量在问答：管理层是否直接回答需求和毛利问题。",
+      "body": ["管理层预设陈述通常强调长期愿景，问答更能暴露投资者担心的短期变量。", "回避或反复强调的措辞应进入后续跟踪清单。"],
       "supporting_sources": ["S2"],
       "core": true
     },
@@ -56,103 +57,103 @@
     }
   ],
   "financial_bridge": [
-    {"metric": "Revenue", "current": "$19.3B sample", "prior": "$21.3B sample", "change": "Down", "read": "Separate volume, ASP, mix, FX and one-offs."},
-    {"metric": "Gross margin", "current": "16.3% sample", "prior": "17.4% sample", "change": "Pressure", "read": "Pricing and utilization matter more than headline deliveries."},
-    {"metric": "Free cash flow", "current": "Negative sample", "prior": "Positive sample", "change": "Quality watch", "read": "Inventory, receivables and capex decide cash quality."}
+    {"metric": "营业收入", "current": "样例 193 亿美元", "prior": "样例 213 亿美元", "change": "下降", "read": "拆分销量、平均售价、产品结构、汇率和一次性因素。"},
+    {"metric": "毛利率", "current": "样例 16.3%", "prior": "样例 17.4%", "change": "承压", "read": "价格和产能利用率比交付量标题更重要。"},
+    {"metric": "自由现金流", "current": "样例为负", "prior": "样例为正", "change": "质量待观察", "read": "库存、应收账款和资本开支决定现金质量。"}
   ],
   "segments": [
-    {"name": "Automotive", "role": "Core profit pool", "change": "Volume/ASP/mix decide the near-term thesis.", "watch_item": "Gross margin, deliveries, inventory days, price cuts."},
-    {"name": "Energy generation and storage", "role": "Second curve", "change": "High growth can matter if margin and cash conversion hold.", "watch_item": "Megapack deployments, backlog, margin."},
-    {"name": "Services and other", "role": "Installed-base economics", "change": "Useful for retention and ecosystem economics, but not yet the main valuation driver.", "watch_item": "Service gross margin and warranty signals."},
-    {"name": "AI/FSD/Robotaxi", "role": "Long-duration option", "change": "Valuation impact depends on verified commercialization milestones.", "watch_item": "Regulatory approvals, attach rate, revenue recognition."}
+    {"name": "汽车业务", "role": "核心利润池", "change": "销量、平均售价和产品结构决定近端投资主线。", "watch_item": "毛利率、交付量、库存天数、降价幅度。"},
+    {"name": "能源发电与储能", "role": "第二增长曲线", "change": "如果毛利和现金转换能维持，高增长才会真正影响估值。", "watch_item": "储能产品部署量、在手订单、毛利率。"},
+    {"name": "服务及其他", "role": "存量用户经济", "change": "有助于留存和生态经济，但暂时不是主要估值驱动。", "watch_item": "服务毛利率与质保信号。"},
+    {"name": "人工智能、自动驾驶与无人出租车", "role": "长期期权", "change": "估值影响取决于经过验证的商业化里程碑。", "watch_item": "监管许可、功能使用率、收入确认。"}
   ],
   "supply_chain": [
-    {"layer": "End demand", "title": "EV buyers / fleet / grid storage customers", "evidence": "Demand sensitivity to price, financing rates and policy incentives.", "grade": "C"},
-    {"layer": "System/platform", "title": "Vehicle platform + energy storage systems", "evidence": "Company disclosures and delivery/deployment data.", "grade": "A"},
-    {"layer": "Module/component", "title": "Battery cells, packs, power electronics, compute", "evidence": "Management commentary and supplier/industry evidence need cross-checking.", "grade": "B"},
-    {"layer": "Equipment/material/capacity", "title": "Cell capacity, factories, lithium materials, manufacturing automation", "evidence": "Capacity and cost curve determine margin durability.", "grade": "C"},
-    {"layer": "Raw material/policy/energy", "title": "Lithium, nickel, grid interconnect, subsidies", "evidence": "External data and policy context affect cost and demand.", "grade": "C"}
+    {"layer": "终端需求", "title": "电动车消费者、车队客户、电网储能客户", "evidence": "需求对价格、融资利率和政策激励较敏感。", "grade": "C"},
+    {"layer": "系统与平台", "title": "整车平台与储能系统", "evidence": "公司披露和交付/部署数据提供基础证据。", "grade": "A"},
+    {"layer": "模组与组件", "title": "电芯、电池包、电力电子、车载计算", "evidence": "管理层说法需要与供应商和行业证据交叉验证。", "grade": "B"},
+    {"layer": "设备、材料与产能", "title": "电芯产能、工厂、锂材料、制造自动化", "evidence": "产能和成本曲线决定毛利率韧性。", "grade": "C"},
+    {"layer": "原料、政策与能源", "title": "锂、镍、电网接入、补贴政策", "evidence": "外部数据和政策环境影响成本与需求。", "grade": "C"}
   ],
   "call_language": {
     "items": [
-      {"area": "Prepared remarks", "read": "Long-term autonomy and energy narrative emphasized.", "evidence": "Transcript/webcast", "watch": "Which claims map to current revenue."},
-      {"area": "Q&A", "read": "Analysts likely press on demand, pricing and margin.", "evidence": "Transcript Q&A", "watch": "Direct answer versus vague answer."},
-      {"area": "Missing language", "read": "Any disappearance of prior demand confidence should be flagged.", "evidence": "Compare prior calls", "watch": "Repeated omissions across calls."}
+      {"area": "预设陈述", "read": "长期自动驾驶和能源叙事被重点强调。", "evidence": "电话会文字稿或网络回放", "watch": "哪些说法能映射到当期收入。"},
+      {"area": "问答环节", "read": "分析师通常会追问需求、定价和毛利。", "evidence": "电话会问答记录", "watch": "直接回答还是模糊回答。"},
+      {"area": "缺失措辞", "read": "若此前强调的需求信心消失，需要标记。", "evidence": "对比前几次电话会", "watch": "跨季度重复消失的措辞。"}
     ]
   },
   "market_reaction": {
     "price_context": [
-      {"window": "1D", "move": "-8% sample", "relative": "Underperformed Nasdaq sample", "note": "Use live price source in real report."},
-      {"window": "5D", "move": "-11% sample", "relative": "Worse than auto peers sample", "note": "Peer comparison required."}
+      {"window": "一日", "move": "样例下跌 8%", "relative": "样例跑输科技股基准", "note": "真实报告需使用实时价格信源。"},
+      {"window": "五日", "move": "样例下跌 11%", "relative": "样例弱于汽车同业", "note": "必须纳入同业比较。"}
     ],
     "drivers": [
-      {"name": "Fundamental surprise", "read": "Margin and cash-flow quality are plausible primary drivers.", "evidence_grade": "A", "supporting_sources": ["S1"], "primary": true},
-      {"name": "Guidance tone", "read": "Management language can amplify or offset the financial print.", "evidence_grade": "B", "supporting_sources": ["S2"], "primary": false},
-      {"name": "Sector beta", "read": "Benchmark and auto peer moves prevent over-attributing to company news.", "evidence_grade": "C", "supporting_sources": ["S4"], "primary": false},
-      {"name": "Social narrative", "read": "Online debate may explain attention and positioning, not facts.", "evidence_grade": "D", "supporting_sources": ["S5"], "primary": false}
+      {"name": "基本面预期差", "read": "毛利率和现金流质量是可能的主要驱动。", "evidence_grade": "A", "supporting_sources": ["S1"], "primary": true},
+      {"name": "指引语气", "read": "管理层措辞会放大或抵消财务数据本身的影响。", "evidence_grade": "B", "supporting_sources": ["S2"], "primary": false},
+      {"name": "行业贝塔", "read": "基准和汽车同业走势能避免把所有波动都归因于公司自身。", "evidence_grade": "C", "supporting_sources": ["S4"], "primary": false},
+      {"name": "社媒叙事", "read": "线上讨论只能解释注意力和可能的仓位因素，不能证明事实。", "evidence_grade": "D", "supporting_sources": ["S5"], "primary": false}
     ]
   },
   "research_notes": {
     "summary": [
-      "No full sell-side report is included in this sample.",
-      "A real report should state whether full text was obtained, then compare public rating or target-price changes against company disclosures."
+      "本样例不包含完整卖方研报。",
+      "真实报告应说明是否取得研报全文，再把公开评级或目标价变化与公司披露进行对照。"
     ],
     "checks": [
-      {"claim": "Margin recovery thesis", "support": "Needs official margin bridge and management commentary.", "limit": "Cannot be proven by social narrative."},
-      {"claim": "Autonomy optionality", "support": "Needs verified commercialization milestones.", "limit": "Valuation sensitivity is inference-heavy."}
+      {"claim": "毛利率修复观点", "support": "需要官方毛利桥和管理层评论支撑。", "limit": "不能由社媒叙事证明。"},
+      {"claim": "自动驾驶期权价值", "support": "需要经过验证的商业化里程碑。", "limit": "估值敏感性高度依赖推断。"}
     ]
   },
   "scenarios": [
-    {"name": "Bull", "thesis": "Margin stabilizes while energy and software optionality gain evidence.", "assumptions": "No further severe price war; storage deployments scale.", "disconfirming": "Margin keeps falling despite volume."},
-    {"name": "Base", "thesis": "Auto remains under pressure, energy helps but does not fully re-rate the stock.", "assumptions": "Mixed demand, gradual cost improvement.", "disconfirming": "Either demand snaps back or cash flow deteriorates sharply."},
-    {"name": "Bear", "thesis": "Pricing pressure and capex overwhelm long-duration optionality.", "assumptions": "Lower ASP, weaker cash conversion, delayed autonomy monetization.", "disconfirming": "Verified high-margin software/energy contribution arrives earlier."}
+    {"name": "乐观情景", "thesis": "毛利率企稳，同时能源和软件期权获得更多证据。", "assumptions": "不再出现严重价格战；储能部署放量。", "disconfirming": "销量增长但毛利率继续下降。"},
+    {"name": "基准情景", "thesis": "汽车业务仍承压，能源业务有帮助但不足以完全重估股票。", "assumptions": "需求分化，成本逐步改善。", "disconfirming": "需求明显反弹，或现金流急剧恶化。"},
+    {"name": "悲观情景", "thesis": "定价压力和资本开支压过长期期权价值。", "assumptions": "平均售价下降、现金转换变弱、自动驾驶变现推迟。", "disconfirming": "高毛利软件或能源贡献更早兑现。"}
   ],
   "sources": [
     {
       "id": "S1",
-      "title": "Tesla Investor Relations earnings release placeholder",
+      "title": "特斯拉投资者关系财报发布占位信源",
       "url": "https://ir.tesla.com/",
       "date": "2025-04-22",
-      "source_type": "Company IR earnings release",
+      "source_type": "公司投资者关系财报发布",
       "evidence_grade": "A",
-      "used_for": "Core financial metrics and segment disclosure"
+      "used_for": "核心财务指标和分部披露"
     },
     {
       "id": "S2",
-      "title": "Tesla earnings call webcast/transcript placeholder",
+      "title": "特斯拉电话会网络回放或文字稿占位信源",
       "url": "https://ir.tesla.com/",
       "date": "2025-04-22",
-      "source_type": "Earnings call transcript/webcast",
+      "source_type": "电话会文字稿或网络回放",
       "evidence_grade": "B",
-      "used_for": "Management language, prepared remarks and Q&A"
+      "used_for": "管理层措辞、预设陈述和问答"
     },
     {
       "id": "S3",
-      "title": "Tesla Form 10-Q / 10-K placeholder",
+      "title": "特斯拉美国证监会季报或年报占位信源",
       "url": "https://www.sec.gov/edgar/search/",
       "date": "2025-04-23",
-      "source_type": "SEC filing",
+      "source_type": "美国证监会披露文件",
       "evidence_grade": "A",
-      "used_for": "Financial statements, cash flow and risk disclosures"
+      "used_for": "财务报表、现金流和风险披露"
     },
     {
       "id": "S4",
-      "title": "Market price and benchmark placeholder",
+      "title": "市场价格与基准比较占位信源",
       "url": "https://www.nasdaq.com/market-activity/stocks/tsla",
       "date": "2025-04-23",
-      "source_type": "Market data",
+      "source_type": "市场数据",
       "evidence_grade": "C",
-      "used_for": "Event-window price reaction and benchmark comparison"
+      "used_for": "事件窗口股价反应和基准比较"
     },
     {
       "id": "S5",
-      "title": "Public social-media narrative placeholder",
+      "title": "公开社媒叙事占位信源",
       "url": "https://x.com/search?q=Tesla%20earnings",
       "date": "2025-04-23",
-      "source_type": "Social narrative sample",
+      "source_type": "社媒叙事样本",
       "evidence_grade": "D",
-      "used_for": "Market narrative and attention signal only"
+      "used_for": "仅用于市场叙事和注意力信号"
     }
   ],
-  "disclaimer": "样例仅展示 stock-deepread 报告结构、证据分级和 HTML 样式，不构成投资建议，也不是实时 Tesla 分析。"
+  "disclaimer": "样例仅展示股票深读报告结构、证据分级和网页样式，不构成投资建议，也不是实时特斯拉分析。"
 }
