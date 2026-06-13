@@ -1,0 +1,7 @@
+interface:
+  display_name: "股票深读"
+  short_description: "上市公司披露、财报、电话会与研报深读"
+  default_prompt: "Use $stock-deepread to 解读特斯拉最新财报与电话会议内容，并生成 HTML 深度报告。"
+
+policy:
+  allow_implicit_invocation: true

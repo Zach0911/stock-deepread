@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tesla 财报与电话会深读样例</title>
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --panel: #fffdf7;
+      --ink: #141414;
+      --muted: #66645f;
+      --line: #d9d2c3;
+      --accent: #0e6f6a;
+      --accent-2: #b54708;
+      --accent-3: #273f88;
+      --good: #137333;
+      --warn: #b06000;
+      --bad: #b42318;
+      --shadow: 0 20px 50px rgba(31, 28, 23, .08);
+      --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Aptos", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .theme-industrial-chain { --accent: #6b4e16; --accent-2: #0d6b4f; --accent-3: #7a2e1d; }
+    .theme-consumer-ops { --accent: #0d5c8a; --accent-2: #8a4b0d; --accent-3: #7b2f5c; }
+    .theme-tech-infrastructure { --accent: #234f9f; --accent-2: #0c6b58; --accent-3: #7c3aed; }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        linear-gradient(90deg, rgba(20,20,20,.035) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(20,20,20,.025) 1px, transparent 1px),
+        var(--bg);
+      background-size: 32px 32px;
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.55;
+    }
+
+    a { color: var(--accent-3); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 28px; }
+    .report-shell { border-left: 1px solid var(--line); border-right: 1px solid var(--line); background: rgba(255, 253, 247, .7); min-height: 100vh; }
+
+    header#hero-summary {
+      min-height: 76vh;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+      align-items: stretch;
+      padding-top: 28px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .eyebrow::before { content: ""; width: 30px; height: 2px; background: var(--accent); display: inline-block; }
+    h1 { font-family: var(--serif); font-size: clamp(44px, 7vw, 86px); line-height: .92; margin: 18px 0 18px; letter-spacing: 0; }
+    h2 { font-family: var(--serif); font-size: 32px; line-height: 1.08; margin: 0 0 18px; letter-spacing: 0; }
+    h3 { font-size: 16px; margin: 0 0 10px; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    .lead { font-size: 21px; max-width: 720px; color: #2d2a25; }
+
+    .hero-card, .panel, .metric-card, .finding, .scenario, .source-row, .mini-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .hero-card { padding: 28px; display: flex; flex-direction: column; justify-content: space-between; }
+    .hero-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 24px; }
+    .meta-item { border-top: 1px solid var(--line); padding-top: 10px; }
+    .meta-label { font-family: var(--mono); font-size: 11px; color: var(--muted); text-transform: uppercase; }
+    .meta-value { font-weight: 700; margin-top: 4px; }
+
+    .verdict {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+      background: #141414;
+      color: #fffaf0;
+      padding: 28px;
+      border: 1px solid #141414;
+      box-shadow: var(--shadow);
+    }
+    .verdict .label { font-family: var(--mono); font-size: 12px; color: #d8d1c6; text-transform: uppercase; }
+    .verdict .value { font-family: var(--serif); font-size: 40px; line-height: 1; }
+    .confidence { display: inline-flex; width: max-content; padding: 7px 10px; background: var(--accent); color: #fff; font-weight: 700; }
+
+    section { padding: 32px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 18px; border-top: 2px solid var(--ink); padding-top: 14px; margin-bottom: 16px; }
+    .section-note { color: var(--muted); max-width: 520px; font-size: 14px; }
+
+    #key-metrics .metric-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .metric-card { padding: 16px; min-height: 128px; }
+    .metric-label { font-family: var(--mono); color: var(--muted); font-size: 12px; }
+    .metric-value { font-family: var(--serif); font-size: 30px; margin: 8px 0 4px; }
+    .metric-delta { color: var(--accent-2); font-weight: 700; }
+    .metric-source { font-size: 12px; color: var(--muted); }
+
+    .finding-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .finding { padding: 18px; position: relative; overflow: hidden; }
+    .finding::before { content: attr(data-rank); position: absolute; right: 12px; top: -10px; font-family: var(--serif); font-size: 70px; color: rgba(14,111,106,.12); }
+    .finding-title { font-weight: 800; font-size: 18px; margin-bottom: 8px; padding-right: 40px; }
+    .finding-body { color: #34312c; }
+    .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .badge { display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--line); padding: 4px 7px; font-family: var(--mono); font-size: 11px; background: #f9f4e8; }
+    .grade-A { background: #e8f3ed; color: var(--good); border-color: #b9dcc8; }
+    .grade-B { background: #edf3ff; color: var(--accent-3); border-color: #c6d6ff; }
+    .grade-C { background: #fff7e6; color: var(--warn); border-color: #f4d79c; }
+    .grade-D, .grade-E { background: #fff0ed; color: var(--bad); border-color: #fac7bd; }
+
+    .panel { padding: 18px; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 720px; }
+    th, td { text-align: left; vertical-align: top; padding: 12px; border-bottom: 1px solid var(--line); }
+    th { font-family: var(--mono); font-size: 12px; color: var(--muted); text-transform: uppercase; background: #f8f1e4; }
+    td { font-size: 14px; }
+
+    .segment-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .mini-card { padding: 16px; }
+    .mini-kicker { font-family: var(--mono); font-size: 11px; color: var(--muted); text-transform: uppercase; }
+    .mini-title { font-weight: 800; margin: 5px 0 8px; }
+
+    .chain { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+    .chain-node { border: 1px solid var(--line); background: #fffdf7; padding: 14px; min-height: 150px; position: relative; }
+    .chain-node::after { content: "->"; position: absolute; right: -16px; top: 50%; transform: translateY(-50%); color: var(--accent); font-family: var(--mono); font-weight: 800; }
+    .chain-node:last-child::after { content: ""; }
+    .chain-layer { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+    .chain-title { font-weight: 800; margin: 8px 0; }
+
+    .reaction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .driver-list { display: grid; gap: 10px; }
+    .driver { display: grid; grid-template-columns: 120px 1fr auto; gap: 10px; align-items: start; border-bottom: 1px solid var(--line); padding: 10px 0; }
+    .driver-name { font-weight: 800; }
+    .driver-weight { font-family: var(--mono); color: var(--accent-2); }
+
+    .scenario-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .scenario { padding: 18px; }
+    .scenario h3 { font-family: var(--serif); font-size: 24px; }
+
+    .source-list { display: grid; gap: 10px; }
+    .source-row { display: grid; grid-template-columns: 82px 1fr 140px 1.4fr; gap: 12px; padding: 13px; align-items: start; }
+    .source-title { font-weight: 800; }
+    .source-meta { font-size: 12px; color: var(--muted); font-family: var(--mono); }
+    .empty { color: var(--muted); font-style: italic; }
+    .footnote { margin: 28px 0 4px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+
+    @media (max-width: 920px) {
+      .wrap { padding: 18px; }
+      header#hero-summary, .reaction-grid { grid-template-columns: 1fr; min-height: auto; }
+      #key-metrics .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .finding-grid, .segment-grid, .scenario-grid { grid-template-columns: 1fr; }
+      .chain { grid-template-columns: 1fr; }
+      .chain-node::after { content: "v"; right: 18px; top: auto; bottom: -18px; transform: none; }
+      .chain-node:last-child::after { content: ""; }
+      .source-row { grid-template-columns: 1fr; }
+      .driver { grid-template-columns: 1fr; }
+      h1 { font-size: 46px; }
+    }
+  </style>
+</head>
+<body class="theme-industrial-chain">
+  <main class="report-shell">
+    <div class="wrap">
+      <header id="hero-summary">
+        
+        <div class="hero-card">
+          <div>
+            <div class="eyebrow">Stock Deepread / 股票深读</div>
+            <h1>Tesla 财报与电话会深读样例</h1>
+            <p class="lead">这是一份示例报告，用来展示 stock-deepread 的 HTML 结构与证据纪律。样例结论不是实时投资判断；真实使用时必须刷新最新披露、电话会和股价数据。</p>
+          </div>
+          <div class="hero-meta"><div class="meta-item"><div class="meta-label">公司/代码</div><div class="meta-value">Tesla TSLA</div></div><div class="meta-item"><div class="meta-label">市场</div><div class="meta-value">US</div></div><div class="meta-item"><div class="meta-label">期间</div><div class="meta-value">Sample period, not realtime</div></div><div class="meta-item"><div class="meta-label">生成日期</div><div class="meta-value">2026-06-13</div></div><div class="meta-item"><div class="meta-label">披露日期</div><div class="meta-value">2025-04-22</div></div><div class="meta-item"><div class="meta-label">报告类型</div><div class="meta-value">earnings_report, earnings_call, market_reaction</div></div></div>
+        </div>
+        <aside class="verdict">
+          <div>
+            <div class="label">One-line verdict</div>
+            <div class="value">Watch / 等待证据再确认</div>
+          </div>
+          <div><span class="confidence">Confidence: Medium</span></div>
+          <div>
+            <div class="label">最大分歧</div>
+            <p>市场到底在给短期交付和毛利压力定价，还是在提前定价自动驾驶与储能的长期期权。</p>
+          </div>
+          <div>
+            <div class="label">下一催化</div>
+            <p>下一次交付数据、毛利率趋势、储能部署和管理层对自动驾驶商业化节奏的更新。</p>
+          </div>
+          <div>
+            <div class="label">最大证伪</div>
+            <p>如果价格竞争继续侵蚀汽车毛利，且储能或软件收入无法弥补，长期叙事需要下修。</p>
+          </div>
+        </aside>
+    
+      </header>
+
+      <section id="key-metrics">
+        <div class="section-head">
+          <h2>关键数据仪表盘</h2>
+          <div class="section-note">优先展示能解释经营变化、预期差和股价反应的指标。</div>
+        </div>
+        <div class="metric-grid">
+            <div class="metric-card">
+              <div class="metric-label">Revenue</div>
+              <div class="metric-value">$19.3B</div>
+              <div class="metric-delta">sample -9% YoY</div>
+              <div class="metric-source">A-grade filing/release in real report</div>
+            </div>
+            
+            <div class="metric-card">
+              <div class="metric-label">Automotive gross margin</div>
+              <div class="metric-value">sample 16.3%</div>
+              <div class="metric-delta">pressure from pricing/mix</div>
+              <div class="metric-source">Use official shareholder deck</div>
+            </div>
+            
+            <div class="metric-card">
+              <div class="metric-label">Free cash flow</div>
+              <div class="metric-value">sample negative</div>
+              <div class="metric-delta">working-capital + capex watch</div>
+              <div class="metric-source">Tie to cash conversion</div>
+            </div>
+            
+            <div class="metric-card">
+              <div class="metric-label">Event-window move</div>
+              <div class="metric-value">sample -8%</div>
+              <div class="metric-delta">relative underperformance</div>
+              <div class="metric-source">Use price source + benchmark</div>
+            </div>
+            </div>
+      </section>
+
+      <section id="findings">
+        <div class="section-head">
+          <h2>这次真正变了什么</h2>
+          <div class="section-note">每条核心判断都必须回到 A/B/C 证据，D/E 只能作为线索或推断。</div>
+        </div>
+        <div class="finding-grid">
+            <article class="finding" data-rank="01">
+              <div class="finding-title">核心不是只看 EPS beat/miss，而是汽车毛利能否止住下滑。</div>
+              <div class="finding-body"><p>价格、产品 mix、产能利用率和原材料成本共同决定汽车业务的利润底座。</p><p>如果毛利率继续下探，市场会降低对长期期权的容忍度。</p></div>
+              <div class="badges"><span class="badge grade-A">S1 / A</span><span class="badge grade-B">S2 / B</span></div>
+            </article>
+            
+            <article class="finding" data-rank="02">
+              <div class="finding-title">储能是财务桥里的第二增长曲线，但还需要看部署、毛利和现金转换。</div>
+              <div class="finding-body"><p>储能收入增速本身不够，关键是它能否贡献可持续毛利和现金流。</p><p>需要把订单、产能和交付节奏拆开看。</p></div>
+              <div class="badges"><span class="badge grade-A">S1 / A</span><span class="badge grade-A">S3 / A</span></div>
+            </article>
+            
+            <article class="finding" data-rank="03">
+              <div class="finding-title">电话会的真正信息量在 Q&amp;A：管理层是否直接回答需求和毛利问题。</div>
+              <div class="finding-body"><p>prepared remarks 通常强调长期愿景，Q&amp;A 更能暴露投资者担心的短期变量。</p><p>回避或反复强调的措辞应进入后续跟踪清单。</p></div>
+              <div class="badges"><span class="badge grade-B">S2 / B</span></div>
+            </article>
+            
+            <article class="finding" data-rank="04">
+              <div class="finding-title">社媒叙事只能解释注意力，不能证明订单、客户或估值。</div>
+              <div class="finding-body"><p>样例中社媒只作为市场叙事热度，不作为事实或投资结论的独立证据。</p></div>
+              <div class="badges"><span class="badge grade-D">S5 / D</span></div>
+            </article>
+            </div>
+      </section>
+
+      <section id="financial-bridge">
+        <div class="section-head">
+          <h2>财务桥与经营翻译</h2>
+          <div class="section-note">把叙事翻译成收入、毛利、现金流、库存、资本开支或估值。</div>
+        </div>
+        <div class="panel"><table><thead><tr><th>Metric</th><th>Current</th><th>Prior</th><th>Change</th><th>Read</th></tr></thead><tbody><tr><td>Revenue</td><td>$19.3B sample</td><td>$21.3B sample</td><td>Down</td><td>Separate volume, ASP, mix, FX and one-offs.</td></tr><tr><td>Gross margin</td><td>16.3% sample</td><td>17.4% sample</td><td>Pressure</td><td>Pricing and utilization matter more than headline deliveries.</td></tr><tr><td>Free cash flow</td><td>Negative sample</td><td>Positive sample</td><td>Quality watch</td><td>Inventory, receivables and capex decide cash quality.</td></tr></tbody></table></div>
+      </section>
+
+      <section id="segments">
+        <div class="section-head">
+          <h2>业务分部深读</h2>
+          <div class="section-note">看增长质量、利润贡献、管理层口径和后续需要追踪的指标。</div>
+        </div>
+        <div class="segment-grid">
+        <article class="mini-card">
+          <div class="mini-kicker">Core profit pool</div>
+          <div class="mini-title">Automotive</div>
+          <p>Volume/ASP/mix decide the near-term thesis.</p>
+          <p><strong>Watch:</strong> Gross margin, deliveries, inventory days, price cuts.</p>
+        </article>
+        
+        <article class="mini-card">
+          <div class="mini-kicker">Second curve</div>
+          <div class="mini-title">Energy generation and storage</div>
+          <p>High growth can matter if margin and cash conversion hold.</p>
+          <p><strong>Watch:</strong> Megapack deployments, backlog, margin.</p>
+        </article>
+        
+        <article class="mini-card">
+          <div class="mini-kicker">Installed-base economics</div>
+          <div class="mini-title">Services and other</div>
+          <p>Useful for retention and ecosystem economics, but not yet the main valuation driver.</p>
+          <p><strong>Watch:</strong> Service gross margin and warranty signals.</p>
+        </article>
+        
+        <article class="mini-card">
+          <div class="mini-kicker">Long-duration option</div>
+          <div class="mini-title">AI/FSD/Robotaxi</div>
+          <p>Valuation impact depends on verified commercialization milestones.</p>
+          <p><strong>Watch:</strong> Regulatory approvals, attach rate, revenue recognition.</p>
+        </article>
+        </div>
+      </section>
+
+      <section id="supply-chain">
+        <div class="section-head">
+          <h2>产业链与卡点</h2>
+          <div class="section-note">从终端需求向上游追，判断公司是否控制真实瓶颈。</div>
+        </div>
+        <div class="chain">
+        <div class="chain-node">
+          <div class="chain-layer">End demand</div>
+          <div class="chain-title">EV buyers / fleet / grid storage customers</div>
+          <p>Demand sensitivity to price, financing rates and policy incentives.</p>
+          <div class="badges"><span class="badge grade-C">C</span></div>
+        </div>
+        
+        <div class="chain-node">
+          <div class="chain-layer">System/platform</div>
+          <div class="chain-title">Vehicle platform + energy storage systems</div>
+          <p>Company disclosures and delivery/deployment data.</p>
+          <div class="badges"><span class="badge grade-A">A</span></div>
+        </div>
+        
+        <div class="chain-node">
+          <div class="chain-layer">Module/component</div>
+          <div class="chain-title">Battery cells, packs, power electronics, compute</div>
+          <p>Management commentary and supplier/industry evidence need cross-checking.</p>
+          <div class="badges"><span class="badge grade-B">B</span></div>
+        </div>
+        
+        <div class="chain-node">
+          <div class="chain-layer">Equipment/material/capacity</div>
+          <div class="chain-title">Cell capacity, factories, lithium materials, manufacturing automation</div>
+          <p>Capacity and cost curve determine margin durability.</p>
+          <div class="badges"><span class="badge grade-C">C</span></div>
+        </div>
+        
+        <div class="chain-node">
+          <div class="chain-layer">Raw material/policy/energy</div>
+          <div class="chain-title">Lithium, nickel, grid interconnect, subsidies</div>
+          <p>External data and policy context affect cost and demand.</p>
+          <div class="badges"><span class="badge grade-C">C</span></div>
+        </div>
+        </div>
+      </section>
+
+      <section id="call-language">
+        <div class="section-head">
+          <h2>电话会语言与 Q&amp;A</h2>
+          <div class="section-note">区分 prepared remarks、分析师追问、回避点和措辞变化。</div>
+        </div>
+        <div class="panel"><table><thead><tr><th>Area</th><th>Read</th><th>Evidence</th><th>Watch</th></tr></thead><tbody><tr><td>Prepared remarks</td><td>Long-term autonomy and energy narrative emphasized.</td><td>Transcript/webcast</td><td>Which claims map to current revenue.</td></tr><tr><td>Q&amp;A</td><td>Analysts likely press on demand, pricing and margin.</td><td>Transcript Q&amp;A</td><td>Direct answer versus vague answer.</td></tr><tr><td>Missing language</td><td>Any disappearance of prior demand confidence should be flagged.</td><td>Compare prior calls</td><td>Repeated omissions across calls.</td></tr></tbody></table></div>
+      </section>
+
+      <section id="market-reaction">
+        <div class="section-head">
+          <h2>市场反应归因</h2>
+          <div class="section-note">价格解释必须比较指数、同业、预期、估值、交易结构与叙事。</div>
+        </div>
+        <div class="reaction-grid">
+      <div class="panel"><h3>价格上下文</h3><table><thead><tr><th>Window</th><th>Move</th><th>Relative</th><th>Note</th></tr></thead><tbody><tr><td>1D</td><td>-8% sample</td><td>Underperformed Nasdaq sample</td><td>Use live price source in real report.</td></tr><tr><td>5D</td><td>-11% sample</td><td>Worse than auto peers sample</td><td>Peer comparison required.</td></tr></tbody></table></div>
+      <div class="panel"><h3>驱动排序</h3><div class="driver-list">
+        <div class="driver">
+          <div class="driver-name">Fundamental surprise</div>
+          <div>Margin and cash-flow quality are plausible primary drivers.</div>
+          <div><span class="badge grade-A">A</span></div>
+        </div>
+        
+        <div class="driver">
+          <div class="driver-name">Guidance tone</div>
+          <div>Management language can amplify or offset the financial print.</div>
+          <div><span class="badge grade-B">B</span></div>
+        </div>
+        
+        <div class="driver">
+          <div class="driver-name">Sector beta</div>
+          <div>Benchmark and auto peer moves prevent over-attributing to company news.</div>
+          <div><span class="badge grade-C">C</span></div>
+        </div>
+        
+        <div class="driver">
+          <div class="driver-name">Social narrative</div>
+          <div>Online debate may explain attention and positioning, not facts.</div>
+          <div><span class="badge grade-D">D</span></div>
+        </div>
+        </div></div>
+    </div>
+      </section>
+
+      <section id="research-notes">
+        <div class="section-head">
+          <h2>研报与外部观点校验</h2>
+          <div class="section-note">只还原公开可见观点；不可假装读过付费全文。</div>
+        </div>
+        <div class="panel"><p>No full sell-side report is included in this sample.</p><p>A real report should state whether full text was obtained, then compare public rating or target-price changes against company disclosures.</p><table><thead><tr><th>Visible claim</th><th>Support</th><th>Limit / caveat</th></tr></thead><tbody><tr><td>Margin recovery thesis</td><td>Needs official margin bridge and management commentary.</td><td>Cannot be proven by social narrative.</td></tr><tr><td>Autonomy optionality</td><td>Needs verified commercialization milestones.</td><td>Valuation sensitivity is inference-heavy.</td></tr></tbody></table></div>
+      </section>
+
+      <section id="scenarios">
+        <div class="section-head">
+          <h2>情景、分歧与证伪</h2>
+          <div class="section-note">结论不只看 bull case，也写清楚什么会让它失效。</div>
+        </div>
+        <div class="scenario-grid">
+        <article class="scenario">
+          <h3>Bull</h3>
+          <p>Margin stabilizes while energy and software optionality gain evidence.</p>
+          <p><strong>关键假设:</strong> No further severe price war; storage deployments scale.</p>
+          <p><strong>证伪:</strong> Margin keeps falling despite volume.</p>
+        </article>
+        
+        <article class="scenario">
+          <h3>Base</h3>
+          <p>Auto remains under pressure, energy helps but does not fully re-rate the stock.</p>
+          <p><strong>关键假设:</strong> Mixed demand, gradual cost improvement.</p>
+          <p><strong>证伪:</strong> Either demand snaps back or cash flow deteriorates sharply.</p>
+        </article>
+        
+        <article class="scenario">
+          <h3>Bear</h3>
+          <p>Pricing pressure and capex overwhelm long-duration optionality.</p>
+          <p><strong>关键假设:</strong> Lower ASP, weaker cash conversion, delayed autonomy monetization.</p>
+          <p><strong>证伪:</strong> Verified high-margin software/energy contribution arrives earlier.</p>
+        </article>
+        </div>
+      </section>
+
+      <section id="source-register">
+        <div class="section-head">
+          <h2>信源与证据表</h2>
+          <div class="section-note">A/B/C 支撑事实与核心判断；D 级只展示市场叙事。</div>
+        </div>
+        <div class="source-list">
+            <div class="source-row">
+              <div><span class="badge grade-A">A</span></div>
+              <div>
+                <div class="source-title"><a href="https://ir.tesla.com/">Tesla Investor Relations earnings release placeholder</a></div>
+                <div class="source-meta">S1 / Company IR earnings release</div>
+              </div>
+              <div class="source-meta">2025-04-22</div>
+              <div>Core financial metrics and segment disclosure</div>
+            </div>
+            
+            <div class="source-row">
+              <div><span class="badge grade-B">B</span></div>
+              <div>
+                <div class="source-title"><a href="https://ir.tesla.com/">Tesla earnings call webcast/transcript placeholder</a></div>
+                <div class="source-meta">S2 / Earnings call transcript/webcast</div>
+              </div>
+              <div class="source-meta">2025-04-22</div>
+              <div>Management language, prepared remarks and Q&amp;A</div>
+            </div>
+            
+            <div class="source-row">
+              <div><span class="badge grade-A">A</span></div>
+              <div>
+                <div class="source-title"><a href="https://www.sec.gov/edgar/search/">Tesla Form 10-Q / 10-K placeholder</a></div>
+                <div class="source-meta">S3 / SEC filing</div>
+              </div>
+              <div class="source-meta">2025-04-23</div>
+              <div>Financial statements, cash flow and risk disclosures</div>
+            </div>
+            
+            <div class="source-row">
+              <div><span class="badge grade-C">C</span></div>
+              <div>
+                <div class="source-title"><a href="https://www.nasdaq.com/market-activity/stocks/tsla">Market price and benchmark placeholder</a></div>
+                <div class="source-meta">S4 / Market data</div>
+              </div>
+              <div class="source-meta">2025-04-23</div>
+              <div>Event-window price reaction and benchmark comparison</div>
+            </div>
+            
+            <div class="source-row">
+              <div><span class="badge grade-D">D</span></div>
+              <div>
+                <div class="source-title"><a href="https://x.com/search?q=Tesla%20earnings">Public social-media narrative placeholder</a></div>
+                <div class="source-meta">S5 / Social narrative sample</div>
+              </div>
+              <div class="source-meta">2025-04-23</div>
+              <div>Market narrative and attention signal only</div>
+            </div>
+            </div>
+        <div class="footnote">样例仅展示 stock-deepread 报告结构、证据分级和 HTML 样式，不构成投资建议，也不是实时 Tesla 分析。</div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TITLE}}</title>
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --panel: #fffdf7;
+      --ink: #141414;
+      --muted: #66645f;
+      --line: #d9d2c3;
+      --accent: #0e6f6a;
+      --accent-2: #b54708;
+      --accent-3: #273f88;
+      --good: #137333;
+      --warn: #b06000;
+      --bad: #b42318;
+      --shadow: 0 20px 50px rgba(31, 28, 23, .08);
+      --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Aptos", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .theme-industrial-chain { --accent: #6b4e16; --accent-2: #0d6b4f; --accent-3: #7a2e1d; }
+    .theme-consumer-ops { --accent: #0d5c8a; --accent-2: #8a4b0d; --accent-3: #7b2f5c; }
+    .theme-tech-infrastructure { --accent: #234f9f; --accent-2: #0c6b58; --accent-3: #7c3aed; }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        linear-gradient(90deg, rgba(20,20,20,.035) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(20,20,20,.025) 1px, transparent 1px),
+        var(--bg);
+      background-size: 32px 32px;
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.55;
+    }
+
+    a { color: var(--accent-3); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 28px; }
+    .report-shell { border-left: 1px solid var(--line); border-right: 1px solid var(--line); background: rgba(255, 253, 247, .7); min-height: 100vh; }
+
+    header#hero-summary {
+      min-height: 76vh;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+      align-items: stretch;
+      padding-top: 28px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .eyebrow::before { content: ""; width: 30px; height: 2px; background: var(--accent); display: inline-block; }
+    h1 { font-family: var(--serif); font-size: clamp(44px, 7vw, 86px); line-height: .92; margin: 18px 0 18px; letter-spacing: 0; }
+    h2 { font-family: var(--serif); font-size: 32px; line-height: 1.08; margin: 0 0 18px; letter-spacing: 0; }
+    h3 { font-size: 16px; margin: 0 0 10px; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    .lead { font-size: 21px; max-width: 720px; color: #2d2a25; }
+
+    .hero-card, .panel, .metric-card, .finding, .scenario, .source-row, .mini-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .hero-card { padding: 28px; display: flex; flex-direction: column; justify-content: space-between; }
+    .hero-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 24px; }
+    .meta-item { border-top: 1px solid var(--line); padding-top: 10px; }
+    .meta-label { font-family: var(--mono); font-size: 11px; color: var(--muted); text-transform: uppercase; }
+    .meta-value { font-weight: 700; margin-top: 4px; }
+
+    .verdict {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+      background: #141414;
+      color: #fffaf0;
+      padding: 28px;
+      border: 1px solid #141414;
+      box-shadow: var(--shadow);
+    }
+    .verdict .label { font-family: var(--mono); font-size: 12px; color: #d8d1c6; text-transform: uppercase; }
+    .verdict .value { font-family: var(--serif); font-size: 40px; line-height: 1; }
+    .confidence { display: inline-flex; width: max-content; padding: 7px 10px; background: var(--accent); color: #fff; font-weight: 700; }
+
+    section { padding: 32px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 18px; border-top: 2px solid var(--ink); padding-top: 14px; margin-bottom: 16px; }
+    .section-note { color: var(--muted); max-width: 520px; font-size: 14px; }
+
+    #key-metrics .metric-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .metric-card { padding: 16px; min-height: 128px; }
+    .metric-label { font-family: var(--mono); color: var(--muted); font-size: 12px; }
+    .metric-value { font-family: var(--serif); font-size: 30px; margin: 8px 0 4px; }
+    .metric-delta { color: var(--accent-2); font-weight: 700; }
+    .metric-source { font-size: 12px; color: var(--muted); }
+
+    .finding-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .finding { padding: 18px; position: relative; overflow: hidden; }
+    .finding::before { content: attr(data-rank); position: absolute; right: 12px; top: -10px; font-family: var(--serif); font-size: 70px; color: rgba(14,111,106,.12); }
+    .finding-title { font-weight: 800; font-size: 18px; margin-bottom: 8px; padding-right: 40px; }
+    .finding-body { color: #34312c; }
+    .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .badge { display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--line); padding: 4px 7px; font-family: var(--mono); font-size: 11px; background: #f9f4e8; }
+    .grade-A { background: #e8f3ed; color: var(--good); border-color: #b9dcc8; }
+    .grade-B { background: #edf3ff; color: var(--accent-3); border-color: #c6d6ff; }
+    .grade-C { background: #fff7e6; color: var(--warn); border-color: #f4d79c; }
+    .grade-D, .grade-E { background: #fff0ed; color: var(--bad); border-color: #fac7bd; }
+
+    .panel { padding: 18px; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 720px; }
+    th, td { text-align: left; vertical-align: top; padding: 12px; border-bottom: 1px solid var(--line); }
+    th { font-family: var(--mono); font-size: 12px; color: var(--muted); text-transform: uppercase; background: #f8f1e4; }
+    td { font-size: 14px; }
+
+    .segment-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .mini-card { padding: 16px; }
+    .mini-kicker { font-family: var(--mono); font-size: 11px; color: var(--muted); text-transform: uppercase; }
+    .mini-title { font-weight: 800; margin: 5px 0 8px; }
+
+    .chain { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+    .chain-node { border: 1px solid var(--line); background: #fffdf7; padding: 14px; min-height: 150px; position: relative; }
+    .chain-node::after { content: "->"; position: absolute; right: -16px; top: 50%; transform: translateY(-50%); color: var(--accent); font-family: var(--mono); font-weight: 800; }
+    .chain-node:last-child::after { content: ""; }
+    .chain-layer { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+    .chain-title { font-weight: 800; margin: 8px 0; }
+
+    .reaction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .driver-list { display: grid; gap: 10px; }
+    .driver { display: grid; grid-template-columns: 120px 1fr auto; gap: 10px; align-items: start; border-bottom: 1px solid var(--line); padding: 10px 0; }
+    .driver-name { font-weight: 800; }
+    .driver-weight { font-family: var(--mono); color: var(--accent-2); }
+
+    .scenario-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .scenario { padding: 18px; }
+    .scenario h3 { font-family: var(--serif); font-size: 24px; }
+
+    .source-list { display: grid; gap: 10px; }
+    .source-row { display: grid; grid-template-columns: 82px 1fr 140px 1.4fr; gap: 12px; padding: 13px; align-items: start; }
+    .source-title { font-weight: 800; }
+    .source-meta { font-size: 12px; color: var(--muted); font-family: var(--mono); }
+    .empty { color: var(--muted); font-style: italic; }
+    .footnote { margin: 28px 0 4px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+
+    @media (max-width: 920px) {
+      .wrap { padding: 18px; }
+      header#hero-summary, .reaction-grid { grid-template-columns: 1fr; min-height: auto; }
+      #key-metrics .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .finding-grid, .segment-grid, .scenario-grid { grid-template-columns: 1fr; }
+      .chain { grid-template-columns: 1fr; }
+      .chain-node::after { content: "v"; right: 18px; top: auto; bottom: -18px; transform: none; }
+      .chain-node:last-child::after { content: ""; }
+      .source-row { grid-template-columns: 1fr; }
+      .driver { grid-template-columns: 1fr; }
+      h1 { font-size: 46px; }
+    }
+  </style>
+</head>
+<body class="{{THEME_CLASS}}">
+  <main class="report-shell">
+    <div class="wrap">
+      <header id="hero-summary">
+        {{HERO_SUMMARY}}
+      </header>
+
+      <section id="key-metrics">
+        <div class="section-head">
+          <h2>关键数据仪表盘</h2>
+          <div class="section-note">优先展示能解释经营变化、预期差和股价反应的指标。</div>
+        </div>
+        <div class="metric-grid">{{KEY_METRICS}}</div>
+      </section>
+
+      <section id="findings">
+        <div class="section-head">
+          <h2>这次真正变了什么</h2>
+          <div class="section-note">每条核心判断都必须回到 A/B/C 证据，D/E 只能作为线索或推断。</div>
+        </div>
+        <div class="finding-grid">{{FINDINGS}}</div>
+      </section>
+
+      <section id="financial-bridge">
+        <div class="section-head">
+          <h2>财务桥与经营翻译</h2>
+          <div class="section-note">把叙事翻译成收入、毛利、现金流、库存、资本开支或估值。</div>
+        </div>
+        <div class="panel">{{FINANCIAL_BRIDGE}}</div>
+      </section>
+
+      <section id="segments">
+        <div class="section-head">
+          <h2>业务分部深读</h2>
+          <div class="section-note">看增长质量、利润贡献、管理层口径和后续需要追踪的指标。</div>
+        </div>
+        <div class="segment-grid">{{SEGMENTS}}</div>
+      </section>
+
+      <section id="supply-chain">
+        <div class="section-head">
+          <h2>产业链与卡点</h2>
+          <div class="section-note">从终端需求向上游追，判断公司是否控制真实瓶颈。</div>
+        </div>
+        <div class="chain">{{SUPPLY_CHAIN}}</div>
+      </section>
+
+      <section id="call-language">
+        <div class="section-head">
+          <h2>电话会语言与 Q&amp;A</h2>
+          <div class="section-note">区分 prepared remarks、分析师追问、回避点和措辞变化。</div>
+        </div>
+        <div class="panel">{{CALL_LANGUAGE}}</div>
+      </section>
+
+      <section id="market-reaction">
+        <div class="section-head">
+          <h2>市场反应归因</h2>
+          <div class="section-note">价格解释必须比较指数、同业、预期、估值、交易结构与叙事。</div>
+        </div>
+        <div class="reaction-grid">{{MARKET_REACTION}}</div>
+      </section>
+
+      <section id="research-notes">
+        <div class="section-head">
+          <h2>研报与外部观点校验</h2>
+          <div class="section-note">只还原公开可见观点；不可假装读过付费全文。</div>
+        </div>
+        <div class="panel">{{RESEARCH_NOTES}}</div>
+      </section>
+
+      <section id="scenarios">
+        <div class="section-head">
+          <h2>情景、分歧与证伪</h2>
+          <div class="section-note">结论不只看 bull case，也写清楚什么会让它失效。</div>
+        </div>
+        <div class="scenario-grid">{{SCENARIOS}}</div>
+      </section>
+
+      <section id="source-register">
+        <div class="section-head">
+          <h2>信源与证据表</h2>
+          <div class="section-note">A/B/C 支撑事实与核心判断；D 级只展示市场叙事。</div>
+        </div>
+        <div class="source-list">{{SOURCE_REGISTER}}</div>
+        <div class="footnote">{{DISCLAIMER}}</div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

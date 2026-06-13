@@ -1,0 +1,70 @@
+{
+  "name": "stock-deepread-test-prompts",
+  "purpose": "用于验证股票深读 Skill 是否能自动补齐信源、保持证据边界，并生成 HTML 深度报告。",
+  "global_pass_criteria": [
+    "先做信源计划和 source register，再写结论。",
+    "source register 包含 URL、日期、source_type、evidence_grade、used_for。",
+    "核心判断至少有 A/B/C 证据支持。",
+    "明确区分事实、管理层口径、第三方观点、社媒叙事和 AI 推断。",
+    "HTML 报告包含关键数据、财务桥、产业链、市场反应、情景与证伪、信源表。",
+    "找不到完整研报、电话会或社媒数据时，明确说明不可得，不编造。"
+  ],
+  "cases": [
+    {
+      "id": "us-tsla-latest-earnings-call",
+      "market": "US",
+      "company": "Tesla",
+      "prompt": "解读特斯拉最新财报与电话会议内容，生成一份美观的 HTML 深度报告。",
+      "disclosure_types": ["earnings_report", "earnings_call"],
+      "must_include": ["最新期间和披露日期", "汽车/能源/服务/AI 或自动驾驶业务", "毛利率与现金流质量", "电话会 Q&A", "电池/芯片/产能/需求渠道产业链", "Bull/Base/Bear"]
+    },
+    {
+      "id": "us-nvda-earnings-market-reaction",
+      "market": "US",
+      "company": "NVIDIA",
+      "prompt": "英伟达最新财报后股价为什么大涨或大跌？请结合财报、电话会、同业表现、估值、期权/仓位和社媒叙事，生成 HTML 解读。",
+      "disclosure_types": ["earnings_report", "earnings_call", "market_reaction"],
+      "must_include": ["绝对与相对股价表现", "数据中心/游戏/毛利/指引预期差", "AI 基建产业链", "驱动排序与证据等级", "社媒叙事只作 D 级信号"]
+    },
+    {
+      "id": "hk-xiaomi-results-research-notes",
+      "market": "HK",
+      "company": "小米集团",
+      "prompt": "解读小米集团最新业绩和最近券商观点，重点看汽车业务、手机毛利、IoT 和股价反应。",
+      "disclosure_types": ["earnings_report", "research_note", "market_reaction"],
+      "must_include": ["HKEX 披露日期", "手机/IoT/互联网服务/EV", "汽车供应链与产能", "公开研报观点与披露事实对照", "港股交易语境"]
+    },
+    {
+      "id": "cn-catl-annual-report-supply-chain",
+      "market": "A-share",
+      "company": "宁德时代",
+      "prompt": "解读宁德时代最新年报，重点看电池产业链、上下游议价权、库存、现金流和股价表现。",
+      "disclosure_types": ["annual_report", "market_reaction"],
+      "must_include": ["巨潮或交易所年报", "电池产业链", "锂/材料成本与 OEM 议价", "库存/应收/现金流/资本开支", "A 股行业 beta 和政策语境"]
+    },
+    {
+      "id": "hk-ipo-prospectus-deepread",
+      "market": "HK",
+      "company": "港股 IPO",
+      "prompt": "帮我解读最近提交上市文件的一家港股 IPO，重点看商业模式、财务质量、客户集中、募资用途、估值和风险，并生成 HTML 报告。",
+      "disclosure_types": ["ipo_prospectus"],
+      "must_include": ["若多家公司匹配则先说明选择逻辑", "HKEX 申请版本或招股书", "收入质量/客户集中/关联交易", "现金流和营运资金", "募资用途/锁定/稀释", "同业估值 caveat"]
+    },
+    {
+      "id": "hk-meituan-research-note-unavailable",
+      "market": "HK",
+      "company": "美团",
+      "prompt": "解读某券商最新关于美团的研报。如果你找不到完整原文，也请基于公开信源判断它的观点是否靠谱。",
+      "disclosure_types": ["research_note", "earnings_context"],
+      "must_include": ["是否取得研报全文", "只还原公开可见观点", "与公司披露对照", "外卖/到店酒旅/新业务竞争", "估值方法限制", "版权安全摘要"]
+    },
+    {
+      "id": "multi-listed-baba-filing-call",
+      "market": "multi-listed",
+      "company": "阿里巴巴",
+      "prompt": "解读阿里巴巴最新财报和电话会，说明美股和港股市场反应是否不同，为什么。",
+      "disclosure_types": ["earnings_report", "earnings_call", "market_reaction"],
+      "must_include": ["ADR 与港股代码映射", "主披露信源", "美股/港股交易时段差异", "汇率/流动性/指数/投资者结构", "分部分析", "两个市场的 source table"]
+    }
+  ]
+}
