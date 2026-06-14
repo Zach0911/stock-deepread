@@ -69,6 +69,16 @@
 - 情景与证伪：Bull/Base/Bear、关键假设、触发条件、证伪信号。
 - 信源与证据表：URL、日期、证据等级和支撑结论。
 
+## 标准样例
+
+中文财报解读报告以后以博通样例为标准：
+
+- `examples/broadcom-latest-earnings-deepread.html`
+- `examples/broadcom-latest-earnings-data.json`
+- `examples/screenshots/broadcom-latest-earnings-desktop.png`
+
+这个样例规定了默认风格：首屏结论清楚、关键数据仪表盘使用阿拉伯数字、财务桥和产业链足够深入、社媒/市场反应有证据边界、末尾保留完整信源表。
+
 ## 证据边界
 
 | 等级 | 来源 | 用法 |

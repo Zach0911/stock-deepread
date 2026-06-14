@@ -1,0 +1,196 @@
+{
+  "sample_only": false,
+  "company": {
+    "name": "博通",
+    "display_name": "博通",
+    "ticker": "",
+    "market": "US",
+    "industry": "半导体、人工智能基础设施、基础设施软件"
+  },
+  "report": {
+    "title": "博通最新财报深读",
+    "period": "2026 财年第 2 季度，截至 2026 年 5 月 3 日",
+    "disclosure_date": "2026-06-03",
+    "generated_at": "2026-06-13",
+    "verified_latest_as_of": "2026-06-13",
+    "theme": "tech-infrastructure",
+    "disclosure_types": ["earnings_report", "earnings_call", "market_reaction"],
+    "latest_request": true
+  },
+  "conclusion": {
+    "verdict": "基本面很强，但股价看的是更高预期",
+    "confidence": "中高",
+    "summary": "博通最新财报的经营质量很强：收入、利润、现金流和人工智能半导体都创出高强度增长。真正的分歧不在“有没有增长”，而在市场已经把人工智能自定义芯片和网络业务定价到很高位置后，下一季指引是否足够超预期。",
+    "key_debate": "博通是人工智能数据中心自定义芯片和网络卡点，还是只是吃到一轮超大客户采购高峰。",
+    "next_catalyst": "2026 财年第 3 季度收入兑现、人工智能半导体收入能否达到约 160 亿美元、库存和应收账款是否继续上升。",
+    "main_disconfirming_evidence": "如果人工智能客户订单延后、库存继续堆高、或威睿云基础套件增长不能维持，当前高估值会变得脆弱。"
+  },
+  "metrics": [
+    {"label": "季度收入", "value": "221.9 亿美元", "delta": "同比增长 48%", "note": "公司财报发布与季报均可核验"},
+    {"label": "人工智能半导体收入", "value": "108 亿美元", "delta": "同比增长 143%", "note": "管理层称高于此前预测"},
+    {"label": "自由现金流", "value": "102.6 亿美元", "delta": "占收入 46%", "note": "经营现金流减资本开支"},
+    {"label": "下季收入指引", "value": "约 294 亿美元", "delta": "同比增长 84%", "note": "公司给出的第 3 季度展望"}
+  ],
+  "findings": [
+    {
+      "title": "最重要的变化是人工智能半导体已经从“增长业务”变成季度收入的核心发动机。",
+      "body": [
+        "人工智能半导体收入达到 108 亿美元，同比增长 143%；管理层预计下一季度人工智能半导体收入约 160 亿美元。",
+        "这说明博通的主线已经不是传统多元半导体，而是大型云厂商自定义加速器和人工智能网络。"
+      ],
+      "supporting_sources": ["S1", "S2", "S3"],
+      "core": true
+    },
+    {
+      "title": "财务质量强，现金流不是纸面利润，但营运资本开始需要盯紧。",
+      "body": [
+        "本季度自由现金流 102.6 亿美元，占收入 46%，证明利润转换能力很强。",
+        "但季报显示应收账款和库存较上一财年末明显上升，说明人工智能交付节奏、客户验收和备货强度会成为后续风险点。"
+      ],
+      "supporting_sources": ["S1", "S2"],
+      "core": true
+    },
+    {
+      "title": "半导体业务是增速核心，威睿云基础套件是利润稳定器。",
+      "body": [
+        "半导体解决方案收入 150.1 亿美元，同比增长 79%，占收入 68%。",
+        "基础设施软件收入 71.8 亿美元，同比增长 9%，增速不如半导体，但经营利润率高，能稳定合并利润。"
+      ],
+      "supporting_sources": ["S1", "S2"],
+      "core": true
+    },
+    {
+      "title": "股价反应不是简单的“财报好就涨”，而是预期差和拥挤交易在重新定价。",
+      "body": [
+        "财报相对公开预期是小幅超预期，但人工智能业务此前已经被市场大幅定价。",
+        "多家市场报道对盘后和次日反应描述不完全一致，因此本报告把股价归因置信度下调；更稳妥的判断是，高预期和指引不够超额，是比基本面恶化更合理的解释。"
+      ],
+      "supporting_sources": ["S4", "S5", "S6", "S7"],
+      "core": true
+    }
+  ],
+  "financial_bridge": [
+    {"metric": "收入", "current": "221.9 亿美元", "prior": "去年同期 150 亿美元", "change": "增加 71.8 亿美元", "read": "增长主要来自人工智能相关半导体和威睿云基础套件。"},
+    {"metric": "调整后息税折旧摊销前利润", "current": "152.4 亿美元", "prior": "去年同期 100 亿美元", "change": "同比增长 52%", "read": "经营杠杆仍然强，利润增长快于收入增长。"},
+    {"metric": "半导体解决方案收入", "current": "150.1 亿美元", "prior": "去年同期 84.1 亿美元", "change": "同比增长 79%", "read": "人工智能自定义加速器和网络产品是主要推动。"},
+    {"metric": "基础设施软件收入", "current": "71.8 亿美元", "prior": "去年同期 66 亿美元", "change": "同比增长 9%", "read": "威睿云基础套件带来稳定增长，但不是本季弹性最大来源。"},
+    {"metric": "自由现金流", "current": "102.6 亿美元", "prior": "去年同期 64.1 亿美元", "change": "同比增长 60%", "read": "现金流质量强，但要结合应收和库存变化继续跟踪。"},
+    {"metric": "库存", "current": "43.3 亿美元", "prior": "上一财年末 22.7 亿美元", "change": "接近翻倍", "read": "可能是人工智能订单备货，也可能在需求节奏变慢时形成压力。"}
+  ],
+  "segments": [
+    {"name": "半导体解决方案", "role": "增长引擎", "change": "收入 150.1 亿美元，同比增长 79%；经营利润 92.8 亿美元，同比增长 93%。", "watch_item": "人工智能自定义加速器、网络芯片、客户部署节奏、先进封装和代工产能。"},
+    {"name": "基础设施软件", "role": "利润稳定器", "change": "收入 71.8 亿美元，同比增长 9%；经营利润 56.5 亿美元，同比增长 13%。", "watch_item": "威睿云基础套件续约、合同终止权、客户迁移阻力、价格接受度。"},
+    {"name": "人工智能半导体", "role": "市场定价核心", "change": "本季度收入 108 亿美元，同比增长 143%；下一季度目标约 160 亿美元。", "watch_item": "超大云客户订单、网络产品随加速器配套销售、是否出现订单延后。"},
+    {"name": "资本回报", "role": "现金流出口", "change": "本季度支付每股 0.65 美元股息；上半财年回购 84.5 亿美元股票。", "watch_item": "自由现金流、债务余额、回购节奏是否影响财务弹性。"}
+  ],
+  "supply_chain": [
+    {"layer": "终端需求", "title": "大型云厂商人工智能资本开支", "evidence": "自定义加速器和人工智能网络需求拉动博通人工智能半导体收入。", "grade": "B"},
+    {"layer": "系统平台", "title": "人工智能集群、训练与推理基础设施", "evidence": "客户需要把计算、网络、互联和软件栈一起优化。", "grade": "C"},
+    {"layer": "模组组件", "title": "自定义加速器、交换芯片、网络接口、光互联", "evidence": "公司季报把增长归因于自定义人工智能加速器和人工智能网络产品。", "grade": "A"},
+    {"layer": "产能与制造", "title": "先进制程、先进封装、测试和系统交付", "evidence": "电话会问答显示市场关注博通能否满足人工智能半导体激增需求和供应链约束。", "grade": "B"},
+    {"layer": "上游约束", "title": "代工、封装、存储器、光模块和电力容量", "evidence": "这是行业链条推断，需要继续用供应商和行业数据交叉验证。", "grade": "E"}
+  ],
+  "call_language": {
+    "items": [
+      {"area": "管理层预设陈述", "read": "管理层把本季记录级收入、利润和自由现金流归因于人工智能半导体加速和经营杠杆。", "evidence": "公司财报发布和公开电话会摘要", "watch": "下一季 160 亿美元人工智能半导体目标是否兑现。"},
+      {"area": "问答环节", "read": "分析师关注人工智能半导体需求激增下的供给能力和供应链约束。", "evidence": "公开电话会文字稿摘要", "watch": "管理层是否给出可验证的产能、交付或客户扩展证据。"},
+      {"area": "措辞变化", "read": "公司从“人工智能收入增长”进一步推进到“增长正在加速”，市场会用更高门槛审视指引。", "evidence": "本季与上一季公司发布口径对比", "watch": "若后续措辞从加速转为正常化，估值可能先收缩。"}
+    ]
+  },
+  "market_reaction": {
+    "price_context": [
+      {"window": "盘后初期", "move": "有媒体记录一度上涨约 2.6%", "relative": "正向反应", "note": "该信源与后续下跌报道存在冲突，需要以交易所历史行情复核。"},
+      {"window": "次日或随后数日", "move": "有媒体记录下跌约 12% 至更大幅度", "relative": "弱于人工智能半导体叙事预期", "note": "核心解释是指引没有满足已经很高的市场预期。"},
+      {"window": "2026 年 6 月 13 日刷新", "move": "通过金融数据工具取得现价 382.07 美元，当日跌 0.91%", "relative": "仅作当前价格锚点", "note": "市场数据为 3 级证据，不支撑财报事实。"}
+    ],
+    "drivers": [
+      {"name": "预期差", "read": "财报强但市场预期更强，特别是人工智能销售展望被拿来和更高耳语预期比较。", "evidence_grade": "C", "supporting_sources": ["S4", "S6"], "primary": true},
+      {"name": "基本面兑现", "read": "收入、人工智能半导体、利润和现金流本身都强，抵消了部分负面反应。", "evidence_grade": "A", "supporting_sources": ["S1", "S2"], "primary": false},
+      {"name": "估值与拥挤交易", "read": "人工智能半导体交易此前涨幅较大，财报后容易出现获利了结。", "evidence_grade": "C", "supporting_sources": ["S6", "S7"], "primary": false},
+      {"name": "信源冲突", "read": "盘后上涨和次日大跌报道并存，说明必须把时间窗口拆开，不能用一句话解释股价。", "evidence_grade": "C", "supporting_sources": ["S5", "S6"], "primary": false}
+    ]
+  },
+  "research_notes": {
+    "summary": [
+      "本次没有使用付费卖方研报全文，因此不还原任何不可见的目标价模型。",
+      "公开预期显示，市场在财报前已预期每股收益约 2.4 美元、收入约 220 亿美元；实际值略高于这一组公开预期。",
+      "公开媒体对股价反应的口径不完全一致，本报告把它作为 3 级市场上下文，而不是核心事实。"
+    ],
+    "checks": [
+      {"claim": "人工智能业务继续加速", "support": "公司披露本季人工智能半导体收入 108 亿美元，并给出下一季约 160 亿美元目标。", "limit": "客户集中和订单时点可能导致季度波动。"},
+      {"claim": "软件业务提供利润底座", "support": "季报披露基础设施软件收入和经营利润继续增长。", "limit": "威睿云基础套件续约和客户迁移阻力仍需跟踪。"},
+      {"claim": "股价下跌说明财报差", "support": "不成立；1 级信源显示经营数据强。", "limit": "更合理解释是市场预期、估值和交易结构。"}
+    ]
+  },
+  "scenarios": [
+    {"name": "乐观情景", "thesis": "人工智能自定义芯片和网络继续放量，下一季人工智能半导体收入达到或超过 160 亿美元，威睿软件维持高利润。", "assumptions": "超大客户资本开支不减速，供应链交付顺畅，库存转化为收入。", "disconfirming": "人工智能收入目标未达成，或客户订单明显延后。"},
+    {"name": "基准情景", "thesis": "博通继续增长，但市场需要消化高估值和高预期，股价表现取决于下一季是否继续超预期。", "assumptions": "收入接近公司指引，利润率维持高位，库存和应收可控。", "disconfirming": "营运资本恶化，或软件增速继续放缓。"},
+    {"name": "悲观情景", "thesis": "人工智能业务仍强，但增长被少数客户和供应链节奏控制，任何订单延后都会放大股价回撤。", "assumptions": "客户集中上升，库存上升变成风险，市场降低人工智能半导体估值倍数。", "disconfirming": "客户数量扩展、订单可见度提高、现金流继续超预期。"}
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "title": "博通 2026 财年第 2 季度业绩发布",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-second-quarter-fiscal-year-2026-financial",
+      "date": "2026-06-03",
+      "source_type": "公司投资者关系财报发布",
+      "evidence_grade": "A",
+      "used_for": "收入、利润、自由现金流、人工智能半导体收入和第三季度指引"
+    },
+    {
+      "id": "S2",
+      "title": "博通 2026 财年第 2 季度美国季报",
+      "url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000054/avgo-20260503.htm",
+      "date": "2026-06-09",
+      "source_type": "美国证监会披露文件",
+      "evidence_grade": "A",
+      "used_for": "分部收入、分部利润、资产负债、现金流、客户集中和营运资本"
+    },
+    {
+      "id": "S3",
+      "title": "公开电话会文字稿摘要",
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-broadcom-q2-2026-earnings-beat-stock-rises-93CH-4725429",
+      "date": "2026-06-03",
+      "source_type": "公开电话会文字稿",
+      "evidence_grade": "B",
+      "used_for": "管理层措辞、问答关注点和人工智能需求讨论"
+    },
+    {
+      "id": "S4",
+      "title": "财报前公开市场预期摘要",
+      "url": "https://www.marketbeat.com/instant-alerts/broadcom-avgo-to-release-quarterly-earnings-on-wednesday-2026-05-27/",
+      "date": "2026-05-27",
+      "source_type": "公开预期与媒体摘要",
+      "evidence_grade": "C",
+      "used_for": "财报前收入和每股收益预期"
+    },
+    {
+      "id": "S5",
+      "title": "公开电话会市场反应摘要",
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-broadcom-q2-2026-earnings-beat-stock-rises-93CH-4725429",
+      "date": "2026-06-03",
+      "source_type": "市场反应媒体摘要",
+      "evidence_grade": "C",
+      "used_for": "盘后初期股价反应和市场叙事"
+    },
+    {
+      "id": "S6",
+      "title": "财报后股价下跌媒体摘要",
+      "url": "https://finance.yahoo.com/markets/article/broadcom-stock-sinks-12-as-ai-chip-forecast-disappoints-165602082.html",
+      "date": "2026-06-04",
+      "source_type": "市场反应媒体摘要",
+      "evidence_grade": "C",
+      "used_for": "次日股价下跌和人工智能销售展望预期差"
+    },
+    {
+      "id": "S7",
+      "title": "金融数据统一工具返回的博通实时行情",
+      "url": "https://github.com/Zach0911/stock-deepread",
+      "date": "2026-06-13",
+      "source_type": "金融数据工具行情",
+      "evidence_grade": "C",
+      "used_for": "当前价格、当日涨跌幅和市场反应背景；底层路由为腾讯财经"
+    }
+  ],
+  "disclaimer": "本报告基于公开信源生成，用于上市公司披露解读和研究辅助，不构成投资建议、买卖建议或收益承诺。"
+}

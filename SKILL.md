@@ -46,6 +46,8 @@ Default output is a single self-contained HTML report:
 - research-note quality check when relevant
 - Bull/Base/Bear scenarios and disconfirming evidence
 
+For Chinese earnings/disclosure reports, use `examples/broadcom-latest-earnings-deepread.html` as the canonical standard for density, visual hierarchy, Arabic-numeral numeric formatting, evidence-register placement, and readable first-viewport dashboard. Use `examples/broadcom-latest-earnings-data.json` as the matching structured-data example.
+
 Use `scripts/source_plan.py` to draft source plans, `scripts/validate_sources.py` to check research data, `scripts/build_html_report.py` to render reports from JSON, and `scripts/validate_html_report.py` to verify generated HTML.
 
 ## Resource Map
@@ -59,4 +61,6 @@ Use `scripts/source_plan.py` to draft source plans, `scripts/validate_sources.py
 | `references/html-report-spec.md` | HTML report structure, themes, validation rules |
 | `references/disclosure-types.md` | Specific checklists for filings, calls, IPOs, and research notes |
 | `assets/report-template.html` | Self-contained HTML report template |
+| `examples/broadcom-latest-earnings-deepread.html` | Canonical Chinese HTML report example |
+| `examples/broadcom-latest-earnings-data.json` | Canonical structured-data example for the Broadcom report |
 | `scripts/*.py` | Source planning, source validation, report rendering, HTML validation |

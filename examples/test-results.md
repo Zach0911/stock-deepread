@@ -35,6 +35,10 @@ python3 /Users/chaozhang/.codex/skills/.system/skill-creator/scripts/quick_valid
 - 使用系统 Google Chrome + Playwright 完成桌面和移动端首屏渲染检查：
   - `examples/screenshots/sample-report-desktop.png`
   - `examples/screenshots/sample-report-mobile.png`
+- 已新增博通标准样例，用于约束后续中文财报深读报告：
+  - `examples/broadcom-latest-earnings-deepread.html`
+  - `examples/broadcom-latest-earnings-data.json`
+  - `examples/screenshots/broadcom-latest-earnings-desktop.png`
 - Codex Skill 官方 quick_validate 通过。
 
 ## 浏览器渲染摘要

@@ -15,6 +15,22 @@ Use a "research terminal" style:
 
 This borrows from frontend-slides principles: single-file delivery, show-don't-tell visuals, distinctive design, and rendered verification.
 
+## Canonical Example
+
+For Chinese earnings/disclosure reports, match the standard demonstrated by:
+
+- `examples/broadcom-latest-earnings-deepread.html`
+- `examples/broadcom-latest-earnings-data.json`
+- `examples/screenshots/broadcom-latest-earnings-desktop.png`
+
+Use this example as the baseline for:
+
+- first viewport: conclusion card + key metadata + clear thesis tension
+- key dashboard: Arabic numerals for amounts, percentages, prices, dates, and changes
+- deep-read sections: findings, financial bridge, segments, supply chain, call language, market reaction, research-note checks, scenarios
+- evidence discipline: source register at the end with evidence grades and source usage
+- style: dense but readable research-terminal layout, not a marketing page or slide deck
+
 ## Language Rules
 
 - Translate English report copy into Chinese by default.
