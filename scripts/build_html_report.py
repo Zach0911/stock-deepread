@@ -15,11 +15,11 @@ TEMPLATE = ROOT / "assets" / "report-template.html"
 
 EMPTY_TEXT = "不适用或暂不可得。"
 GRADE_LABELS = {
-    "A": "一等证据",
-    "B": "二等证据",
-    "C": "三等证据",
-    "D": "四等证据",
-    "E": "五等证据",
+    "A": "1级证据",
+    "B": "2级证据",
+    "C": "3级证据",
+    "D": "4级证据",
+    "E": "5级证据",
 }
 MARKET_LABELS = {
     "US": "美股",

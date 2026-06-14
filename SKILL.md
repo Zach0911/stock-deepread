@@ -24,6 +24,7 @@ Stock Deepread creates source-backed deep reads of public-company disclosures an
 - Do not write a core conclusion unless it is backed by an A/B/C source or explicitly marked as inference.
 - Social media, forums, KOLs, X, Reddit, YouTube comments, Stocktwits, Snowball, Eastmoney Guba, Futu comments, and Xiaohongshu are D-grade narrative signals only. They cannot prove facts or stand alone as a buy/sell reason.
 - For Chinese reports, translate all reader-visible English into Chinese. Keep only unavoidable identifiers such as ticker symbols, URLs, exchange codes, filing form names, and product names when translation would damage accuracy; explain them in Chinese on first use.
+- For Chinese reports, render numeric content with Arabic numerals by default: amounts, percentages, dates, periods, ranks, counts, margins, prices, and changes should use forms like `221.9 亿美元`, `48%`, `2026 年第 2 季度`, not Chinese numeral prose.
 - Do not pretend to have read paywalled or unavailable analyst research. State the limitation and use public summaries, rating changes, target-price changes, and company disclosures.
 - Do not give unconditional buy/sell instructions or personalized position sizing without user constraints.
 - When the user says "latest", verify the filing/release date and reporting period with current sources.

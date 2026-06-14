@@ -18,6 +18,7 @@ This borrows from frontend-slides principles: single-file delivery, show-don't-t
 ## Language Rules
 
 - Translate English report copy into Chinese by default.
+- Render numeric content with Arabic numerals in Chinese reports: amounts, percentages, dates, quarters, ranks, share prices, market moves, margins, and multiples should use forms such as `221.9 亿美元`, `48%`, `2026 年第 2 季度`, `3级证据`.
 - Keep only unavoidable identifiers: ticker symbols, URLs, exchange codes, official filing form names, product names, accounting terms, and source titles where translation would reduce precision.
 - When an identifier is kept in English, explain it in Chinese on first use.
 - Do not leave template labels such as "One-line verdict", "Confidence", "Watch", "Read", "Current", "Prior", "Bull", "Base", "Bear", or "Not applicable" in generated Chinese reports.
